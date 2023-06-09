@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:app="http://www.opengis.net/citygml/appearance/3.0" xmlns:brid="http://www.opengis.net/citygml/bridge/3.0" xmlns:bldg="http://www.opengis.net/citygml/building/3.0" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/3.0" xmlns:grp="http://www.opengis.net/citygml/cityobjectgroup/3.0" xmlns:con="http://www.opengis.net/citygml/construction/3.0" xmlns:core="http://www.opengis.net/citygml/3.0" xmlns:dyn="http://www.opengis.net/citygml/dynamizer/3.0" xmlns:gen="http://www.opengis.net/citygml/generics/3.0" xmlns:luse="http://www.opengis.net/citygml/landuse/3.0" xmlns:pcl="http://www.opengis.net/citygml/pointcloud/3.0" xmlns:dem="http://www.opengis.net/citygml/relief/3.0" xmlns:tran="http://www.opengis.net/citygml/transportation/3.0" xmlns:tun="http://www.opengis.net/citygml/tunnel/3.0" xmlns:veg="http://www.opengis.net/citygml/vegetation/3.0" xmlns:vers="http://www.opengis.net/citygml/versioning/3.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/3.0" xmlns:undergroundParcel="https://github.com/Bahram-Saeidian/VicULA_ADE_CityGML3.git" xmlns:undergroundBoundary="https://github.com/Bahram-Saeidian/VicULA_ADE_CityGML3_Boundary.git" xmlns:surveyElement="https://github.com/Bahram-Saeidian/VicULA_ADE_CityGML3_Survey.git" elementFormDefault="qualified" targetNamespace="https://github.com/Bahram-Saeidian/VicULA_ADE_CityGML3_Survey.git" version="1.0">
+    <import namespace="https://github.com/Bahram-Saeidian/VicULA_ADE_CityGML3.git" schemaLocation="./undergroundParcel.xsd"/>
+	<import namespace="https://github.com/Bahram-Saeidian/VicULA_ADE_CityGML3_Boundary.git" schemaLocation="./undergroundBoundary.xsd"/>
+	<import namespace="http://www.opengis.net/citygml/3.0" schemaLocation="./core.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/appearance/3.0" schemaLocation="./appearance.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/bridge/3.0" schemaLocation="./bridge.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/building/3.0" schemaLocation="./building.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/cityfurniture/3.0" schemaLocation="./cityFurniture.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/cityobjectgroup/3.0" schemaLocation="./cityObjectGroup.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/construction/3.0" schemaLocation="./construction.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/dynamizer/3.0" schemaLocation="./dynamizer.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/generics/3.0" schemaLocation="./generics.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/landuse/3.0" schemaLocation="./landUse.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/pointcloud/3.0" schemaLocation="./pointCloud.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/relief/3.0" schemaLocation="./relief.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/transportation/3.0" schemaLocation="./transportation.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/tunnel/3.0" schemaLocation="./tunnel.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/vegetation/3.0" schemaLocation="./vegetation.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/versioning/3.0" schemaLocation="./versioning.xsd"/>
+    <import namespace="http://www.opengis.net/citygml/waterbody/3.0" schemaLocation="./waterBody.xsd"/>
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element abstract="true" name="AbstractSurveyElement" substitutionGroup="core:AbstractFeature" type="surveyElement:AbstractSurveyElementType"/>
+  <complexType abstract="true" name="AbstractSurveyElementType">
+    <complexContent>
+      <extension base="core:AbstractFeatureType">
+        <sequence/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AbstractSurveyElementPropertyType">
+    <sequence minOccurs="0">
+      <element ref="surveyElement:AbstractSurveyElement"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="ArcObservation" substitutionGroup="surveyElement:SurveyObservation" type="surveyElement:ArcObservationType"/>
+  <complexType name="ArcObservationType">
+    <complexContent>
+      <extension base="surveyElement:SurveyObservationType">
+        <sequence>
+          <element name="arcRadius" type="double"/>
+          <element name="arcLength" type="double"/>
+          <element name="chordLength" type="double"/>
+          <element name="chordBearing" type="double"/>
+          <element name="rot" type="string"/>
+          <element name="arcType" type="surveyElement:ResultTypeType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ArcObservationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="surveyElement:ArcObservation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="ElevationSurface" substitutionGroup="surveyElement:AbstractSurveyElement" type="surveyElement:ElevationSurfaceType"/>
+  <complexType name="ElevationSurfaceType">
+    <complexContent>
+      <extension base="surveyElement:AbstractSurveyElementType">
+        <sequence>
+          <element name="reducedLevel" type="double"/>
+          <element name="verticalDatum" type="string"/>
+          <element minOccurs="0" name="elevationLevels" type="gml:SurfacePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ElevationSurfacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="surveyElement:ElevationSurface"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="LineObservation" substitutionGroup="surveyElement:SurveyObservation" type="surveyElement:LineObservationType"/>
+  <complexType name="LineObservationType">
+    <complexContent>
+      <extension base="surveyElement:SurveyObservationType">
+        <sequence>
+          <element name="distanceType" type="surveyElement:ResultTypeType"/>
+          <element name="distance" type="double"/>
+          <element name="bearingType" type="surveyElement:ResultTypeType"/>
+          <element name="bearing" type="double"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LineObservationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="surveyElement:LineObservation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="ObservationTypeType">
+    <restriction base="string">
+      <enumeration value="boundary"/>
+      <enumeration value="connection"/>
+      <enumeration value="traverse"/>
+      <enumeration value="radiation"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="PointStateType">
+    <restriction base="string">
+      <enumeration value="existing"/>
+      <enumeration value="proposed"/>
+      <enumeration value="destroyed"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="PointTypeType">
+    <restriction base="string">
+      <enumeration value="permanent mark"/>
+      <enumeration value="primary cadastral mark"/>
+      <enumeration value="reference point"/>
+      <enumeration value="traverse point"/>
+      <enumeration value="boundary point"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="ResultTypeType">
+    <restriction base="string">
+      <enumeration value="adopt dimension"/>
+      <enumeration value="computed"/>
+      <enumeration value="derived"/>
+      <enumeration value="measured"/>
+    </restriction>
+  </simpleType>
+  <element abstract="true" name="SurveyObservation" substitutionGroup="surveyElement:AbstractSurveyElement" type="surveyElement:SurveyObservationType"/>
+  <complexType abstract="true" name="SurveyObservationType">
+    <complexContent>
+      <extension base="surveyElement:AbstractSurveyElementType">
+        <sequence>
+          <element name="observationType" type="surveyElement:ObservationTypeType"/>
+          <element name="startPoint" type="string"/>
+          <element name="endPoint" type="string"/>
+          <element minOccurs="0" name="surveyObservations" type="gml:CurvePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="relatedPoint" type="surveyElement:SurveyPointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SurveyObservationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="surveyElement:SurveyObservation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="SurveyPoint" substitutionGroup="surveyElement:AbstractSurveyElement" type="surveyElement:SurveyPointType"/>
+  <complexType name="SurveyPointType">
+    <complexContent>
+      <extension base="surveyElement:AbstractSurveyElementType">
+        <sequence>
+          <element name="pointType" type="surveyElement:PointTypeType"/>
+          <element name="pointState" type="surveyElement:PointStateType"/>
+          <element minOccurs="0" name="monumentType" type="string"/>
+          <element name="easting" type="double"/>
+          <element name="northing" type="double"/>
+          <element minOccurs="0" name="reducedLevel" type="double"/>
+          <element name="horizontalDatum" type="string"/>
+          <element minOccurs="0" name="verticalDatum" type="string"/>
+          <element minOccurs="0" name="surveyPoints" type="gml:PointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SurveyPointPropertyType">
+    <sequence minOccurs="0">
+      <element ref="surveyElement:SurveyPoint"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+</schema>
